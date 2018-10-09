@@ -4,15 +4,19 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {ImgDefaultPipe} from './pipes/img-default.pipe';
 import {LoginComponent} from './login/login.component';
+import { CounterComponent } from './counter/counter.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImgDefaultPipe,
-    LoginComponent
+    LoginComponent,
+    CounterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
