@@ -15,9 +15,6 @@ describe('LoginComponent', () => {
 
   let authService: AuthService;
 
-  // DebugElement - this is a wrapper to the low level DOM element that represents the components view
-  let debugEl: DebugElement;
-
   beforeEach(async(() => {
     // Configure a testing module using the TestBed class
     // This creates a test Angular Module which we can use to instantiate components, perform dependency injection and so on.
@@ -39,13 +36,6 @@ describe('LoginComponent', () => {
 
     // resolve AuthService dependency using the TestBed injector by using the "get" function.
     authService = TestBed.get(AuthService);
-
-    // the "fixture" also holds a reference to the DebugElement,
-    debugEl = fixture.debugElement;
-
-    // fixture is a wrapper for our components environment so we can control things like change detection.
-    // To trigger change detection we call the function fixture.detectChanges()
-    fixture.detectChanges();
   });
 
   it('should be created', () => {
@@ -71,20 +61,5 @@ describe('LoginComponent', () => {
 
     // check to see if the isAuthenticated function was called.
     expect(authService.isAuthenticated).toHaveBeenCalled();
-  });
-
-  it('should show login button when user is not authenticated', () => {
-    // we can get references to other child nodes by querying the DebugElement with a By class.
-    const button = debugEl.query(By.css('button')).nativeElement;
-
-    expect(button.textContent.trim()).toBe('Login');
-  });
-
-  it('should show logout button when user is authenticated', () => {
-    spyOn(authService, 'isAuthenticated').and.returnValue(true);
-    fixture.detectChanges(); // Trigger change detection
-
-    const button = debugEl.query(By.css('button')).nativeElement;
-    expect(button.textContent.trim()).toBe('Logout');
   });
 });
