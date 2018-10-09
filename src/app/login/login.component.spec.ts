@@ -72,8 +72,6 @@ describe('LoginComponent', () => {
     // create a spy on our service so that if the isAuthenticated function is called it returns false
     spyOn(authService, 'isAuthenticated').and.returnValue(of(true));
 
-    // When performing testing we need to call component lifecycle hooks ourselves, like ngOnInit().
-    // Angular won’t do this for us in the test environment.
     component.ngOnInit();
 
     expect(component.needsLogin).toBeFalsy();
@@ -91,8 +89,6 @@ describe('LoginComponent', () => {
   it('should show logout button when user is authenticated', () => {
     spyOn(authService, 'isAuthenticated').and.returnValue(of(true));
 
-    // When performing testing we need to call component lifecycle hooks ourselves, like ngOnInit().
-    // Angular won’t do this for us in the test environment.
     component.ngOnInit();
 
     fixture.detectChanges(); // Trigger change detection
